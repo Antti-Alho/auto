@@ -1,11 +1,14 @@
 #include <Servo.h> 
 
-Servo myservo;
+Servo servo1;
+Servo servo2;
 
 void setup() 
 { 
-  myservo.attach(9);
-  myservo.write(90);  // set servo to mid-point
+  servo1.attach(9);
+  servo2.attach(10);
+  servo1.write(90);
+  servo2.write(90);
 } 
 
 void loop() {} 
