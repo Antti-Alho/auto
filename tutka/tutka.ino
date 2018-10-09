@@ -34,37 +34,6 @@ int buttonState8 = 0;
 int button8Memory = 0;
 int programState = 0;
 int tormays = 0;
-int aika = 0;
-int aika2 = 0;
-int aika3 = 0;
-
-uint8_t tiles0[8] = {
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
-};
-uint8_t tiles1[8] = {
-0xff,0x00,0x00,0x00,0x00,0x00,0x00,0x00
-};
-uint8_t tiles2[8] = {
-0xff,0xff,0x00,0x00,0x00,0x00,0x00,0x00
-};
-uint8_t tiles3[8] = {
-0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00
-};
-uint8_t tiles4[8] = {
-0xff,0xff,0xff,0xff,0x00,0x00,0x00,0x00
-};
-uint8_t tiles5[8] = {
-0xff,0xff,0xff,0xff,0xff,0x00,0x00,0x00
-};
-uint8_t tiles6[8] = {
-0xff,0xff,0xff,0xff,0xff,0xff,0x00,0x00
-};
-uint8_t tiles7[8] = {
-0xff,0xff,0xff,0xff,0xff,0xff,0xff,0x00
-};
-uint8_t tiles8[8] = {
-0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff
-};
 
 uint8_t tiles[10][8] =  {
   {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
@@ -179,8 +148,10 @@ void reset() {
 void startCorner(){
   int collisiontime1 = 0;
   int collisiontime2 = 0;
+  setTime(0);
   suoraan();
   while (programState == 1) {
+    
     buttonState2 = digitalRead(buttonPin2);
     buttonState3 = digitalRead(buttonPin3);
     buttonState4 = digitalRead(buttonPin4);
@@ -188,8 +159,7 @@ void startCorner(){
     buttonState6 = digitalRead(buttonPin6);
     buttonState7 = digitalRead(buttonPin7);
     buttonState8 = digitalRead(buttonPin8);
-    u8x8.setCursor(0,3);
-    u8x8.print("inprogram loop");
+
     if (buttonState7 == LOW || buttonState6 == LOW || buttonState5 == LOW) {
       kaanny_oikea();
       suoraan();
@@ -216,8 +186,6 @@ void startCorner(){
     if (tormays == 2) {
       button8Memory = 0;
       reset();
-      aika2 = millis();
-      aika3 = (aika2 - aika) - 580;
       area = (float)((float)collisiontime1/metri)*((float)collisiontime2/metri);
       u8x8.setCursor(0,0);
       u8x8.print(area);
