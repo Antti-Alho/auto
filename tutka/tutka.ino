@@ -186,7 +186,7 @@ void startCorner(){
     if (tormays == 2) {
       button8Memory = 0;
       reset();
-      area = (float)((float)collisiontime1/metri)*((float)collisiontime2/metri);
+      area = (float)(collisiontime1-290/metri)*(collisiontime2-290/metri);
       u8x8.setCursor(0,0);
       u8x8.print(area);
       programState = 0;
